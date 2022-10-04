@@ -15,6 +15,10 @@ module-name: sdk/resourcemanager/operationalinsights/armoperationalinsights
 module: github.com/Azure/azure-sdk-for-go/$(module-name)
 output-folder: $(go-sdk-folder)/$(module-name)
 azure-arm: true
+directive:
+  - from: Workspaces.json
+    where: $.definitions.Workspace
+    transform: $['properties']['etag']['x-ms-client-name'] = 'eTag'
 ```
 
 ### Go multi-api
